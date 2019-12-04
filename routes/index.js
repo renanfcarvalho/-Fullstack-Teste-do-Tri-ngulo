@@ -16,11 +16,13 @@ router.post('/draw', function(req, res) {
 })
 
 /* GET draw page. */
-router.get('/draw', function(req, res) {
-  global.db.findAll((e, docs) => {
+router.get('/draw', function(req, res, maxSum) {
+  global.db.findOne((e, docs) => {
       if(e) { return console.log(e); }
       res.render('draw', { title: 'Lista valores', docs: docs });
+      var valores=(docs.valores);
   })
+  
 })
 
 
