@@ -9,12 +9,15 @@ function findAll(callback){
 
 
 function insert(triangulo, callback){
-    global.conn.collection("triangulo").insert(triangulo, callback);
+    global.conn.collection("triangulo").insertOne(triangulo, callback);
 }
 
-var ObjectId = require("mongodb").ObjectId;
-function findOne(id, callback){  
-    global.conn.collection("triangulo").find(new ObjectId(id)).toArray(callback);
+
+function findOne(callback){  
+    global.conn.collection("triangulo").findOne({},callback);
+    
 }
+
+
 
 module.exports = {findAll,insert,findOne}
