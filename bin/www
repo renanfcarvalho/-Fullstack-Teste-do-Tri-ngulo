@@ -3,7 +3,7 @@ global.db = require('../db');
 /**
  * Module dependencies.
  */
-
+var functions = require('../views/functions');
 var app = require('../app');
 var debug = require('debug')('testetriangulo:server');
 var http = require('http');
