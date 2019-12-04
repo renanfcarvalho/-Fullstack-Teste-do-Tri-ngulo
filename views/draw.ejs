@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
+<%- include top.ejs %>
     <ul>
-      <% docs.forEach(function(triangulo){ %>
-        <li>
-            <%= triangulo.valores %>
-        </li>
-      <% }) %>
+        <div><%= docs.valores %> </div>
     </ul>
-  </body>
-</html>
+    <p id="salida"></p>
+    <script>
+        var valores = [[6],[3,5],[9,7,1],[4,6,8,4]];
+        function makeTableHTML(myArray ) {
+    
+        var n = valores.length-1;
+        var result = "<table border=1>";
+    for(var i=0; i<=n; i++) {
+        result += "<tr>";
+        for(var j=0; j<=i; j++){
+            result += "<td id="+valores[i][j]+" width='90' align='center'>"+valores[i][j]+"</td>";
+        }
+        result += "</tr>";
+    }
+    result += "</table>";
+
+
+    return result;
+    }
+document.getElementById("salida").innerHTML = makeTableHTML(valores);
+document.getElementById("td").style.backgroundColor = 'yellow';
+</script>
+<%- include bottom.ejs %>
