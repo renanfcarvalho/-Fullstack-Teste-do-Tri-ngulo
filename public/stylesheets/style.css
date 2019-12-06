@@ -17,6 +17,10 @@ h1{
 table{
   text-align: center;
   margin: 2.5%;
+  border-top:1;
+  border-left: 1;
+  border-bottom:0;
+  border-right:0;
 }
 
 .whole{
