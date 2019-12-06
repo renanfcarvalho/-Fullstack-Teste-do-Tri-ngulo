@@ -11,8 +11,13 @@ function findAll(callback){
 function insert(triangulo, callback){
     global.conn.collection("triangulo").insertOne(triangulo, callback);
 }
+function insertRegistroHome(registro, callback) {
+    global.conn.collection("registro").insertOne(registro, callback);
+}
 
-
+function insertRegistroDraw(registro, callback) {
+    global.conn.collection("registro").insertOne(registro, callback);
+}
 function findOne(callback){  
     global.conn.collection("triangulo").findOne({},callback);
     
@@ -20,4 +25,4 @@ function findOne(callback){
 
 
 
-module.exports = {findAll,insert,findOne}
+module.exports = {findAll,insert,findOne,insertRegistroDraw,insertRegistroHome}
