@@ -1,71 +1,71 @@
 <%- include top.ejs %>
-<div class ="whole">
-    <h2>Insere Triângulo</h2>
-    <p>Digite os Valores:<input id="valor" type="number" name="valor"/></p>    
-    <button  id="myBtn" class="btn btn-primary" > Add valor</button >
-    <button  id="viewBtn" class="btn btn-primary" > Visualizar</button >  
-    <form action="/draw" method="POST">
-    <div id="view" name ="view"></div>
-    <input  id ="enviar" type="submit" value="Desenhar triangulo" class="btn btn-light"/>   
+<div class="whole">
+  <h2>Insere Triângulo</h2>
+  <p>Digite os Valores:<input id="valor" type="number" name="valor" /></p>
+  <button id="myBtn" class="btn btn-primary"> Add valor</button>
+  <button id="viewBtn" class="btn btn-primary"> Visualizar</button>
+  <form action="/draw" method="POST">
+      <div id="view" name="view"></div>
+      <input id="enviar" type="submit" value="Desenhar triangulo" class="btn btn-light" />
   </form>
 </div>
   <script>
-    
-var array=[];
-var arr= [];
-var altura=0;
-var aux=0;
+
+var array = [];
+var arr = [];
+var altura = 0;
+var aux = 0;
 var getBtn = document.getElementById('myBtn');
 
 getBtn.onclick = function() {
-    
-    var retorna= getTheData() ;
-    
+
+    var retorna = getTheData();
+
+
 }
 
 // função que pega os dados digitados do triângulo armazena em um vetor 
 //e retorna o formato do array especificado para futura manipulação e a altura dele.
 
 function getTheData() {
-var getTheDataname = getTheData.name;
-var getDataperformanceIni = performance.now();
-var valor = $("#valor").val();
-if(valor!="" && valor!=undefined){
-array.push(valor);
-}
-else{
-  var getDataperformanceFim = performance.now() - getDataperformanceIni;
-	return alert("Digite valores.")
-}
-if (aux==altura){
-    var tamanho=array.length;
-    altura++;
-    var arr = array;
-    if(tamanho<=1){
-    		aux=0;
-    	 return (array,altura);
-
-       
-    } if(tamanho==3){
-
-    		var sliced=array.slice(1,3);
-        var spliced = arr.splice(1, 1 ,sliced);
-        aux = 0 ;
+    var getTheDataname = getTheData.name;
+    var getDataperformanceIni = performance.now();
+    var valor = $("#valor").val();
+    if (valor != "" && valor != undefined) {
+        array.push(valor);
+    } else {
+        var getDataperformanceFim = performance.now() - getDataperformanceIni;
+        return alert("Digite valores.")
     }
-    else{
-    var sliced=arr.slice(tamanho-altura,tamanho);
-    var spliced = arr.splice(aux, 1 ,sliced);
+    if (aux == altura) {
+        var tamanho = array.length;
+        altura++;
+        var arr = array;
+        if (tamanho <= 1) {
+            aux = 0;
+            return (array, altura);
+
+
+        }
+        if (tamanho == 3) {
+
+            var sliced = array.slice(1, 3);
+            var spliced = arr.splice(1, 1, sliced);
+            aux = 0;
+        } else {
+            var sliced = arr.slice(tamanho - altura, tamanho);
+            var spliced = arr.splice(aux, 1, sliced);
+        }
+        aux = 0;
+        var getDataperformanceFim = performance.now() - getDataperformanceIni;
+        console.log(getDataperformanceFim);
+        return (array, altura);
+    } else {
+        aux++
+        var getDataperformanceFim = performance.now() - getDataperformanceIni;
+        console.log(getDataperformanceFim);
+        return (array, altura);
     }
-		aux=0;
-    var getDataperformanceFim = performance.now() - getDataperformanceIni;
-    console.log(getDataperformanceFim);
-    return (array,altura);
-}else{
-  aux++
-  var getDataperformanceFim = performance.now() - getDataperformanceIni;
-  console.log(getDataperformanceFim);
-  return (array,altura);
-}
 
 }
 var getView = document.getElementById('viewBtn');
@@ -73,27 +73,24 @@ var getView = document.getElementById('viewBtn');
 //funçao que permite o usuário visualizar os valores digitados
 
 getView.onclick = function(getTheData) {
-    viewData(array,altura) ;
-    document.getElementById("view").innerHTML =  "";
-    document.getElementById("view").innerHTML =  viewData(array,altura) ;
- 
-    
+    viewData(array, altura);
+    document.getElementById("view").innerHTML = "";
+    document.getElementById("view").innerHTML = viewData(array, altura);
 };
 
 //função que manipula o array para ficar no formato multidimensional
 
-function viewData(array,altura){
-var getviewDataname = viewData.name;
-var viewDataperformanceIni = performance.now();
-var valores = array.slice(0,altura);
-if(valores!="" && valores!= undefined)
-{
-var viewDataperformanceFim = performance.now() - viewDataperformanceIni;
-return valores;
-}else{
-alert("Você precisa digitar valores.");
+function viewData(array, altura) {
+    var getviewDataname = viewData.name;
+    var viewDataperformanceIni = performance.now();
+    var valores = array.slice(0, altura);
+    if (valores != "" && valores != undefined) {
+        var viewDataperformanceFim = performance.now() - viewDataperformanceIni;
+        return valores;
+    } else {
+        alert("Você precisa digitar valores.");
+    }
+    var viewDataperformanceFim = performance.now() - viewDataperformanceIni;
 }
-var viewDataperformanceFim = performance.now() - viewDataperformanceIni;
-}   
     </script>
 <%- include bottom.ejs %>
