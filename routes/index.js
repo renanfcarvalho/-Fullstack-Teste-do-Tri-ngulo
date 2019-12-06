@@ -20,8 +20,8 @@ router.post('/', function(req, res) {
 
 /* Post registro home page. */
 router.post('/', function(req, res) {
-  var funcao = req.param.view;
-  var timeExec=parseFloat(req.body.view);
+  var funcao = req.param.funcname;
+  var timeExec=parseFloat(req.body.performacefim);
   global.db.insertRegistroHome({funcao,timeExec}, (err, result) => {
           if(err) { return console.log(err); }
           res.redirect('/');
