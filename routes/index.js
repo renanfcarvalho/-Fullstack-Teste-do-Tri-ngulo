@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* Post home page. */
 router.post('/draw', function(req, res) {
-  var valores = req.body.valores;
+  var valores = req.body.view;
   global.db.insert({valores}, (err, result) => {
           if(err) { return console.log(err); }
           res.redirect('/draw');
@@ -16,10 +16,10 @@ router.post('/draw', function(req, res) {
 })
 
 /* GET draw page. */
-router.get('/draw', function(req, res, maxSum) {
+router.get('/draw', function(req, res) {
   global.db.findOne((e, docs) => {
       if(e) { return console.log(e); }
-      res.render('draw', { title: 'Lista valores', docs: docs });
+      res.render('draw', { title: 'Desenho Triângulo', docs: docs });
       var valores=(docs.valores);
   })
   
