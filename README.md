@@ -15,6 +15,13 @@ Por isto tornou-se mais viável a utilização da programação dinâmica para a
 ## Front-end
 Para facilitar para o usuário tornado possível, que ele digite apenas os valores e a aplicação que se precupe em montar o array. Foi criado um input de números, onde o usuário vai digitar os valores, depois os dados são tratados, para que seja enviados em forma de array multi- dimensional para o banco. Toda parte CSS tbm foi desenvolvida.
 
+## Back-end
+O arquivo db.js foi criado para manipulação do banco com suas devidas funções, as rotas foram estabelecidas para a funções Get e Post ocorram.
+
+## Teste
+
+As funções foram testadas com Arrays de diferentes tamanhos e com o valores variados, assim dentro das funções obtevesse o retorno esperado.
+
 
 
 
