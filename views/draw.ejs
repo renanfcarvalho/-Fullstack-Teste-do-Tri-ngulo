@@ -1,27 +1,77 @@
 <%- include top.ejs %>
-    <ul>
-        <div><%= docs.valores %> </div>
-    </ul>
-    <p id="salida"></p>
+    <div class="whole">
+        <h2>Teste Triângulo</h2>
+        <div id="vetor">
+            <div id="text">Vetor buscado no banco:</div>
+            <div id="valor"type="number"><%= docs.valores %> </div>
+        </div>
+        <div id="saida"></div>
+        <div id = "somasaida">
+            <div id = "soma">A maior soma:
+            <div id="saida2"></div>
+        </div>
+        </div>
+    </div>
     <script>
+        
         var valores = [[6],[3,5],[9,7,1],[4,6,8,4]];
+
+        
+        //Função que cria visualização de um triângulo retângulo
         function makeTableHTML(myArray ) {
-    
+        var makeTableHTMLname = makeTableHTML.name;
+        var makeTableHTMLperformanceIni = performance.now();
         var n = valores.length-1;
-        var result = "<table border=1>";
-    for(var i=0; i<=n; i++) {
+        var result = "<table border=0>";
+        for(var i=0; i<=n; i++) {
         result += "<tr>";
         for(var j=0; j<=i; j++){
-            result += "<td id="+valores[i][j]+" width='90' align='center'>"+valores[i][j]+"</td>";
+            result += "<td id="+valores[i][j]+" width='90px' align='center' border-color='white'>"+valores[i][j]+"</td>";
         }
         result += "</tr>";
     }
     result += "</table>";
-
-
+    var makeTableHTMLperformanceFim = performance.now() - makeTableHTMLperformanceIni;
+    console.log(makeTableHTMLperformanceFim);
     return result;
-    }
-document.getElementById("salida").innerHTML = makeTableHTML(valores);
-document.getElementById("td").style.backgroundColor = 'yellow';
+    };
+    //função que realiza a soma máxima dos nós do triângulo
+function MaxSum(myArray){
+    var MaxSumName = MaxSum.name;
+    var MaxSumNameperformanceIni = performance.now();
+	var n = valores.length;
+    var position = [];
+    var node = [];
+     for (var i= n-2; i>=0; i--) 
+     { 	
+        for (var j=0; j<=i; j++) 
+        { 
+                
+            if (valores[i+1][j] > valores[i+1][j+1]) {
+                valores[i][j] += valores[i+1][j] ;
+                position.push([i+1,j]);
+                node.push(valores[i+1][j]);
+            }else{          
+                valores[i][j] += valores[i+1][j+1];
+                position.push([i+1,j+1]);
+                node.push(valores[i+1][j+1]);
+                
+            }
+        }
+     
+     }
+     var MaxSumperformanceFim = performance.now() - MaxSumperformanceIni;
+     return valores[0][0];
+    } ;   
+    
+
+document.getElementById("saida").innerHTML = makeTableHTML(valores);
+
+document.getElementById("saida2").innerHTML =  MaxSum(valores);
+
+
+
+
+
 </script>
 <%- include bottom.ejs %>
