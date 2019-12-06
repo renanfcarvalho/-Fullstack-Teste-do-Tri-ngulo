@@ -20,6 +20,7 @@ var getBtn = document.getElementById('myBtn');
 getBtn.onclick = function() {
 
     var retorna = getTheData();
+    $("#valor").val("");
 
 
 }
@@ -32,7 +33,7 @@ function getTheData() {
     var getDataperformanceIni = performance.now();
     var valor = $("#valor").val();
     if (valor != "" && valor != undefined) {
-        array.push(valor);
+        array.push(valor);      
     } else {
         var getDataperformanceFim = performance.now() - getDataperformanceIni;
         return alert("Digite valores.")
