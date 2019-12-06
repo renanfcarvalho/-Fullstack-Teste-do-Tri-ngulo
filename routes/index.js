@@ -1,15 +1,38 @@
 var express = require('express');
 var router = express.Router();
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Teste Triângulo' });
 });
 
 /* Post home page. */
-router.post('/draw', function(req, res) {
-  var valores = req.body.view;
+router.post('/', function(req, res) {
+  var valores = req.param.array;
+  console.log(valores);
   global.db.insert({valores}, (err, result) => {
+          if(err) { return console.log(err); }
+          res.redirect('/draw');
+      })
+})
+
+/* Post registro home page. */
+router.post('/', function(req, res) {
+  var funcao = req.param.view;
+  var timeExec=parseFloat(req.body.view);
+  global.db.insertRegistroHome({funcao,timeExec}, (err, result) => {
+          if(err) { return console.log(err); }
+          res.redirect('/');
+      })
+})
+
+/* Post registro draw page. */
+router.post('/draw', function(req, res) {
+  var funcao = req.body.view;
+  var timeExec=parseFloat(req.body.view);
+  global.db.insertRegistroDraw({funcao,timeExec}, (err, result) => {
           if(err) { return console.log(err); }
           res.redirect('/draw');
       })
